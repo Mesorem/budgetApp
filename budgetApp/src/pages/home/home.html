@@ -7,10 +7,9 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let budgetMap of budgets$ | async">
-    <ion-card-content>
-      {{budgetMap.get('budget').get('id')}}
-    </ion-card-content>
-  </ion-card>
+  <budget-list [budgets]="budgetFeed$ | async"
+    (selected)="selectedBudget($event)"
+    (unselected)="unselectBudget($event)">
+  </budget-list>
 </ion-content>
 

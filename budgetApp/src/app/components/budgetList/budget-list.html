@@ -1,0 +1,5 @@
+<budget-card *ngFor="let budgetMap of budgets" 
+    [budgetMap]="budgetMap"
+    (selected)="selected.emit($event)"
+    (unselected)="unselected.emit($event)">
+</budget-card>

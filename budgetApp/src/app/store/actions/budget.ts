@@ -4,12 +4,14 @@ export type BudgetAction = LoadAction
     | UpdateAction
     | CreateAction
     | SelectAction
+    | UnselectAction
     | DeleteAction;
 
 export const CREATE = "CREATE";
 export const UPDATE = "UPDATE";
 export const DELETE = "DELETE";
 export const SELECT = "SELECT";
+export const UNSELECT = "UNSELECT";
 export const LOAD_INTENT = "LOAD_INTENT";
 export const LOAD = "LOAD"
 
@@ -39,6 +41,12 @@ export class CreateAction implements Action {
 
 export class SelectAction implements Action {
     type: string = SELECT;
+
+    constructor(public payload) {}
+}
+
+export class UnselectAction implements Action {
+    type: string = UNSELECT;
 
     constructor(public payload) {}
 }

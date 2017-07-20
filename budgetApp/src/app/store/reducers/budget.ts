@@ -4,12 +4,12 @@ import { Map, List } from 'immutable';
 
 export interface State {
     budgets: List<any> | null;
-    selected: any | null;
+    selected: List<any> | null;
 }
 
 const initState = {
     budgets: List(),
-    selected: null
+    selected: List()
 }
 
 export const reducer = (state: State = initState, action: budgetAction.BudgetAction): Object => {
@@ -29,7 +29,13 @@ export const reducer = (state: State = initState, action: budgetAction.BudgetAct
             }
         case budgetAction.SELECT: 
             return {
-
+                budgets: state.budgets,
+                selected: state.selected.push(action.payload)
+            }
+        case budgetAction.UNSELECT:
+            return {
+                budgets: state.budgets,
+                selected: remove(state.selected, action.payload)
             }
         case budgetAction.LOAD: 
             return {
@@ -47,7 +53,10 @@ const indexPayload = (payload: List<Object>) => {
     return payload.map(elem => Map().set("indx", index++).set("budget", Map(elem)));
 }
 
-
+const remove = (selected: List<any>, toDelete: Map<string, any>): List<any> => {
+    let indexOf = selected.indexOf(toDelete)
+    return selected.delete(indexOf)
+}
 
 export const getBudgets = (state: State) => state.budgets;
 

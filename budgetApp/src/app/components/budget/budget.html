@@ -1,0 +1,9 @@
+<ion-card [ngStyle]='getBorderStyle()'
+    (click)="clicked()">
+    <ion-card-header>
+        {{budgetMap.get('indx')}} - 111
+    </ion-card-header>
+    <ion-card-content>
+      {{budgetMap.get('budget').get('id')}}
+    </ion-card-content>
+</ion-card>

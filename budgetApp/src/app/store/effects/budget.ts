@@ -29,6 +29,6 @@ export class BudgetEffects {
         .mergeMap(payload => {
             return this.channel.request("getAll")
                 .map(resp => new budgetActions.LoadAction(List(resp.payload)))  
-        })
+        });
         
 }

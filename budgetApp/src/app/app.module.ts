@@ -13,17 +13,21 @@ import { EffectsModule } from '@ngrx/effects';
 import { BudgetEffects } from './store/effects/budget';
  
 import { Socket } from './services/socket.server';
+import { BudgetListComponent } from './components/budgetList/budget-list';
+import { BudgetComponent } from './components/budget/budget';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    BudgetListComponent,
+    BudgetComponent 
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     StoreModule.provideStore(reducer),
-    EffectsModule.run(BudgetEffects)
+    EffectsModule.run(BudgetEffects),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
